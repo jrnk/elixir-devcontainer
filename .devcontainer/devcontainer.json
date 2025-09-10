@@ -1,0 +1,37 @@
+{
+  "name": "Elixir Dev Container",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "args": {
+      "ELIXIR_VERSION": "1.18.3",
+      "OTP_VERSION": "27.3.4",
+      "NODE_VERSION": "20"
+    }
+  },
+  "workspaceFolder": "/workspace",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "JakeBecker.elixir-ls",
+        "phoenixframework.phoenix",
+        "ms-vscode.live-server"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "elixirLS.suggestSpecs": false
+      }
+    }
+  },
+  "forwardPorts": [4000, 4001],
+  "postCreateCommand": "if [ -f mix.exs ]; then mix deps.get; fi",
+  "remoteUser": "vscode",
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "installZsh": true,
+      "configureZshAsDefaultShell": false,
+      "installOhMyZsh": true,
+      "upgradePackages": false
+    }
+  }
+}
