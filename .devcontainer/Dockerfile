@@ -1,9 +1,9 @@
 # Elixir Development Container
 # Based on official Elixir image from hexpm
 #
-ARG ELIXIR_VERSION=1.18.3
-ARG OTP_VERSION=27.3.4
-ARG DEBIAN_VERSION=bookworm-20250428-slim
+ARG ELIXIR_VERSION=1.18.4
+ARG OTP_VERSION=28.1
+ARG DEBIAN_VERSION=trixie-20250908-slim
 ARG NODE_VERSION=20
 
 FROM docker.io/hexpm/elixir:${ELIXIR_VERSION}-erlang-${OTP_VERSION}-debian-${DEBIAN_VERSION}
@@ -11,17 +11,17 @@ FROM docker.io/hexpm/elixir:${ELIXIR_VERSION}-erlang-${OTP_VERSION}-debian-${DEB
 # Install development dependencies
 RUN apt-get update \
   && apt-get install -y --no-install-recommends \
-    build-essential \
-    git \
-    curl \
-    wget \
-    inotify-tools \
-    postgresql-client \
-    sudo \
-    vim \
-    locales \
-    ca-certificates \
-    gnupg \
+  build-essential \
+  git \
+  curl \
+  wget \
+  inotify-tools \
+  postgresql-client \
+  sudo \
+  vim \
+  locales \
+  ca-certificates \
+  gnupg \
   && rm -rf /var/lib/apt/lists/*
 
 # Install Node.js for Phoenix assets
